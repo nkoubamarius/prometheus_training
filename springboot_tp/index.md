@@ -112,3 +112,13 @@ Afterwards, we can do the same thing for our  `demo_counter`  metric.
 After going through all of these steps, we now have an operational dashboard which monitors our Spring Boot application, with our own custom metrics.
 
 ![Grafana data source](../screenshots/graf-dash.png)
+
+
+
+sudo apt-get purge mariadb-server mariadb-client mariadb-common mariadb-server-core-* mariadb-client-core-*
+
+
+CREATE USER 'exporter'@'localhost' IDENTIFIED BY 'Pass@2024' WITH MAX_USER_CONNECTIONS 3;
+GRANT PROCESS, REPLICATION CLIENT, SELECT ON *.* TO 'exporter'@'localhost';
+
+export DATA_SOURCE_NAME='exporter:Pass@2024@(192.168.50.103:3306)/'
